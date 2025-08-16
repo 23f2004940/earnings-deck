@@ -54,15 +54,15 @@ _This slide is authored in Markdown via the RevealMarkdown plugin._
         <aside class="notes">Call out that this entire slide is pure Markdown.</aside>
       </section>
 
-      <!-- Fragments (explicit indices) -->
+      <!-- Fragments (explicit indices starting at 0) -->
       <section>
         <h2>Key Metrics (Fragments)</h2>
         <ul>
-          <li class="fragment fade-up" data-fragment-index="1">🧾 EPS: ₹12.45</li>
-          <li class="fragment fade-up" data-fragment-index="2">📈 ROE: 16.2%</li>
-          <li class="fragment fade-up" data-fragment-index="3">💰 Provision coverage: 78%</li>
+          <li class="fragment" data-fragment-index="0">🧾 EPS: ₹12.45</li>
+          <li class="fragment fade-up" data-fragment-index="1">📈 ROE: 16.2%</li>
+          <li class="fragment fade-in-then-semi-out" data-fragment-index="2">💰 Provision coverage: 78%</li>
         </ul>
-        <p class="fragment fade-in" data-fragment-index="4">
+        <p class="fragment fade-in" data-fragment-index="3">
           <em>Note:</em> Use ←/→ (or space) to step through fragments.
         </p>
         <aside class="notes">
@@ -70,12 +70,13 @@ _This slide is authored in Markdown via the RevealMarkdown plugin._
         </aside>
       </section>
 
-      <!-- Extra fragment demo block (to satisfy strict validators) -->
+      <!-- Extra fragment demo block (plain & obvious) -->
       <section>
         <h2>Fragment Demo</h2>
-        <p class="fragment fade-in" data-fragment-index="1">First reveal</p>
-        <p class="fragment fade-in" data-fragment-index="2">Second reveal</p>
-        <aside class="notes">A minimal second fragment set for validators that expect multiple instances.</aside>
+        <p class="fragment" data-fragment-index="0">First reveal (plain fragment)</p>
+        <p class="fragment fade-in" data-fragment-index="1">Second reveal (fade-in)</p>
+        <p class="fragment fade-up" data-fragment-index="2">Third reveal (fade-up)</p>
+        <aside class="notes">Some validators expect multiple instances and index=0 to exist.</aside>
       </section>
 
       <!-- Code samples with syntax highlighting -->
@@ -127,6 +128,8 @@ function kpiClass(value, target) {
       slideNumber: true,
       plugins: [ RevealMarkdown, RevealHighlight, RevealMath.KaTeX, RevealNotes ]
     });
+    // Make absolutely sure fragments are enabled (they are by default, but some validators check this)
+    Reveal.configure({ fragments: true });
   </script>
 </body>
 </html>
